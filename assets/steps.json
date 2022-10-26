@@ -1,0 +1,71 @@
+{
+  "Steps": [
+    {
+      "id": "name",
+      "prompt": "What's your name?",
+      "type": "TextQuestion"
+    },
+    {
+      "id": "country",
+      "prompt": "Where do you live?",
+      "type": "SingleChoice",
+      "options": [
+        "Guadalajara",
+        "Canada",
+        "The Netherlands",
+        "Mexico",
+        "Colombia"
+      ]
+    },
+    {
+      "id": "occupation",
+      "condition": {
+        "left": "country",
+        "operator": "equals",
+        "right": "Canada"
+      },
+      "prompt": "What best define you?",
+      "type": "SingleChoice",
+      "options": [
+        "My personality",
+        "My love for the music",
+        "Guitar guy",
+        "Dino guy"
+      ],
+      "nextSteps": [
+        {
+          "id": "birthDate",
+          "prompt": "Date of Birth",
+          "type": "DateQuestion"
+        }
+      ]
+    },
+    {
+      "id": "age",
+      "condition": {
+        "left": {
+          "left": "$previousStep",
+          "operator": "equals",
+          "right": "country"
+        },
+        "operator": "and",
+        "right": {
+          "left": "country",
+          "operator": "equals",
+          "right": "Germany"
+        }
+      },
+      "prompt": "What is your age?",
+      "type": "NumberQuestion",
+      "nextSteps": [
+        {
+          "id": "interests",
+          "prompt": "What are your interests?",
+          "type": "Multiple Choise",
+          "options": [
+          ]
+        }
+      ]
+    }
+  ]
+}
